@@ -49,7 +49,6 @@ public class Usuario implements Serializable {
 
 	@Column
 	@NotBlank
-	@Size(min = 4, max = 4, message = "Solo se acmiten contraseñas de 4 caracteres")
 	private String password;
 
 	@Transient
