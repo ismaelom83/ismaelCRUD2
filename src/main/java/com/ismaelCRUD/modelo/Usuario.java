@@ -49,9 +49,11 @@ public class Usuario implements Serializable {
 
 	@Column
 	@NotBlank
+	@Size(min = 59, max = 59, message = "Numero de caracteres invalido")
 	private String password;
 
 	@Transient
+	@Size(min = 59, max = 59, message = "Numero de caracteres invalido")
 	private String confirmacionPassword;
 
 	public Usuario() {
