@@ -1,4 +1,4 @@
-<form class="form" id="formTab" role="form" autocomplete="off" th:object="${formulario}" method="POST" th:action="${modoEditar} ?@{/editarUsuario} :@{/registro}">
+<form class="form mb-5" id="formTab" role="form" autocomplete="off" th:object="${formulario}" method="POST" th:action="${modoEditar} ?@{/editarUsuario} :@{/registro}">
 		<!--Es necesario para poder pasar la validacion del Model-->
 		<input class="form-control" type=hidden th:field="${formulario.id}"  th:if="${modoEditar}">
 	<input class="form-control" type=hidden th:field="${formulario.password}"  th:if="${modoEditar}">

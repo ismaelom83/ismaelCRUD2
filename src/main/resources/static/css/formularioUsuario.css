@@ -13,7 +13,7 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10fr 82fr 8fr;
+    grid-template-rows: 12fr 76fr 12fr;
     grid-gap: 4px;
 }
 
@@ -21,11 +21,13 @@ body {
 nav {
     grid-column: 1/-1;
     grid-row: 1/2;
+    height: 100%;
 }
 
 main {
     grid-column: 1/-1;
     grid-row: 2/3;
+    height: 100%;
     /* overflow:scroll; */
 }
 
@@ -40,6 +42,7 @@ footer {
     list-style: none;
     color: black;
     align-items: center;
+    height: 100%;
 }
 
 footer li {
