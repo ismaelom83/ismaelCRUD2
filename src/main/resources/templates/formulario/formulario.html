@@ -1,0 +1,42 @@
+<form class="form" id="formTab" role="form" autocomplete="off" th:object="${formulario}" method="POST" th:action="${modoEditar} ?@{/editarUsuario} :@{/registro}">
+		<!--Es necesario para poder pasar la validacion del Model-->
+		<input class="form-control" type=hidden th:field="${formulario.id}"  th:if="${modoEditar}">
+	<input class="form-control" type=hidden th:field="${formulario.password}"  th:if="${modoEditar}">
+	<div class="form-group row">
+		<label class="col col-form-label form-control-label">Nombre</label><br>	
+			<input class="form-control" type="text" th:field="${formulario.nombre}" th:disabled="${disableFields}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>
+	</div>
+	<div class="form-group row">
+		<label class="col col-form-label form-control-label">Apellidos</label><br>
+			<input class="form-control" type="text" th:field="${formulario.apellidos}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}">Name Error</div>
+	</div>
+	<div class="form-group row">
+		<label class="col col-form-label form-control-label">Email</label><br>
+			<input class="form-control" type="email" th:field="${formulario.email}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</div>
+	</div>
+	<div class="form-group row nombreusuario">
+		<label class="col col-form-label form-control-label nombreusuario">NombreUsuario</label><br>
+			<input class="form-control" type="text" th:field="${formulario.nombreusuario}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('nombreusuario')}" th:errors="*{nombreusuario}">Name Error</div>
+	</div>
+	<div class="form-group row password" th:if="${modoEditar==null or modoEditar==false}">
+		<label class="col col-form-label form-control-label">Password</label><br>
+			<input class="form-control" type="password" th:field="${formulario.password}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>			
+	</div>
+		<div class="form-group row password" th:if="${modoEditar==null or modoEditar==false}">
+		<label class="col col-form-label form-control-label">ConfirmaPassword</label><br>
+			<input class="form-control" type="password" th:field="${formulario.confirmacionPassword}">
+			<div class="alert-danger" th:if="${#fields.hasErrors('confirmacionPassword')}" th:errors="*{confirmacionPassword}">Name Error</div>			
+	</div>
+	<div class="form-group row">
+		<div class="col-lg-12 text-center">
+			<a class="btn btn-secondary"  th:href="@{'/editarUsuario/cancel'}" th:value="${registro}?'Volver LogIn':'Cancelar'">Volver</a>
+			<input type="submit" class="btn btn-primary" value="Guardar Cambios" th:value="${modoEditar}?'Actualizar Usuario':'Crear Usuario'">
+		</div>
+	</div>
+	<div class="alert alert-danger text-center" th:if="${mensajeError}" th:text="${mensajeError}">Error MEssage</div>
+</form>

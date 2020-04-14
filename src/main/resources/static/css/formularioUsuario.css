@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(../img/fondospringboot.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.wraper2 {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 10fr 82fr 8fr;
+    grid-gap: 4px;
+}
+
+
+nav {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+}
+
+main {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    /* overflow:scroll; */
+}
+
+footer {
+    grid-column: 1/-1;
+    grid-row: 3/-1;
+     background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    color: black;
+    align-items: center;
+}
+
+footer li {
+    display: inline-block;
+}
+
+#social {
+    max-width: 42px;
+}
+
+#social:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transform: scale(1.2);
+}
+
+.navbar-nav {
+    padding: 5px;
+}
+
+.navbar-nav li {
+    padding: 3px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.nav{
+    width: 100%;
+}
+
+.form-group {
+    padding: 10px;
+}
+
+.nombreusuario{
+width: 60%;
+}
+
+.password{
+width: 45%;
+}
+
+.formulariomio {
+    width: 75%;
+}
+
+.main-section {
+    margin: 0 auto;
+    margin-top: 5%;
+}
+.card {
+    opacity: .90;
+}
+
+label {
+    font-weight: bold;
+}
+
+.nav-tabs .nav-item a:not(.active) {
+    background-color: #d1d3d6;
+}
+
+.nav-tabs {
+    border-bottom: 0px;
+}
+
+/*---------------------------------------estilo enlaces------------------------------------------------------*/
+
+
+
+.link-fadeinbg {
+    background: rgba(149, 165, 166, 0.1);
+}
+
+.link-fadeinbg a {
+    color: black;
+    border-bottom: 1px solid rgba(52, 73, 94, 0.4);
+    font-weight: 500;
+    -webkit-transition: background-color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.link-fadeinbg a:hover,
+.link-fadeinbg a:focus {
+    border-color: rgba(52, 73, 94, 0);
+    background-color: rgba(52, 73, 94, 0.1);
+}
+

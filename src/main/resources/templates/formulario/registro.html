@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Informacion Del Usuario y Formulario</title>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="static/css/formularioUsuario.css"
+		th:href="@{/css/formularioUsuario.css}">
+	<!-- DATA TABLE -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<!-- Funcion sacada de la libreria de database para realizar paginaciones y filtrado de datos-->
+	<script type="text/javascript">
+	</script>
+</head>
+
+<body>
+	<main>
+		<div class="container">
+			<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
+						aria-labelledby="form-tab">
+						<div class="card bg-dark text-light">
+							<div class="card-header">
+								<h4>Registro De Usuarios</h4>
+								<!-- <h2> <a th:href="index">Go Log In</a></h2> -->
+							</div>
+							<div class="card-body formulariomio">
+								<div th:include="formulario/formulario.html" th:remove="tag"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

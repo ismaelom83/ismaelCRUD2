@@ -1,0 +1,42 @@
+<div class="table-responsive ">
+	<table id="userList" class="table ">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellidos</th>
+				<th scope="col">Usuario</th>
+				<th scope="col">Email</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="usuario: ${userList}">
+				<!-- <th scope="row">1</th> -->
+				<td th:text="${usuario.id}"></td>
+				<td th:text="${usuario.nombre}"></td>
+				<td th:text="${usuario.apellidos}"></td>
+				<td th:text="${usuario.nombreusuario}"></td>
+				<td th:text="${usuario.email}"></td>
+				<td>
+					 
+						<a href="#" th:href="@{'/editarUsuario/'+ ${usuario.id}}"><i class="fas fa-edit"></i></a>
+				        | <a href="#" th:onclick="'javascript:confirmacionBorrado(\''+ ${usuario.id} +'\');'"><i class="fas fa-user-times"></i></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="alert alert-danger text-center" th:if="${modalError}" th:text="${modalError}">Error MEssage</div>
+</div>
+
+	<script type="text/javascript">
+function confirmacionBorrado(id){
+	$('#deleteModal').modal('show');
+	$("#userIdHiddenInput").val(id);
+}
+
+function borrarUsuario(){
+	var id = $("#userIdHiddenInput").val();
+    window.location = "eliminarUsuario/"+id;
+}
+</script>

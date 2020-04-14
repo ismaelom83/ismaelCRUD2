@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Informacion Del Usuario y Formulario</title>
+
+
+<!--JQUERY-->
+	<script
+ 		src="https://code.jquery.com/jquery-3.3.1.min.js"
+ 			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+ 			crossorigin="anonymous"></script>
+	
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script 
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	
+	
+	
+
+
+	<!-- DATA TABLE -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	
+			<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" href="static/css/formularioUsuario.css"
+		th:href="@{/css/formularioUsuario.css}">
+
+	<script type="text/javascript" src="js/index.js">
+	</script>
+
+</head>
+
+<body>
+	<div class="wraper2">	
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#">SPRING BOOT CRUD</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link" href="#" th:href="@{/logout}"><span>logout</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" th:classappend="${listTab}" id="list-tab" data-toggle="tab"
+							href="#list" role="tab" aria-controls="list" aria-selected="false">Lista De Usuarios</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:classappend="${formTab}" id="form-tab" data-toggle="tab" href="#form"
+							role="tab" aria-controls="form" aria-selected="true">Registro de usuarios</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	<main>
+		<div class="container">
+			<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show " th:classappend="${listTab}" id="list" role="tabpanel"
+						aria-labelledby="list-tab">
+						<div class="card bg-dark text-light">
+							<div class="card-header">
+								<h4>Lista De Usuarios</h4>
+							</div>
+							<div class="card-body ">
+								<div th:include="formulario/lista.html" th:remove="tag"></div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane cabecera-formulario fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
+						aria-labelledby="form-tab">
+						<div class="card bg-dark text-light">
+							<div class="card-header">
+								<h4>Formulario Del Usuario</h4>
+							</div>
+							<div class="card-body formulariomio">
+								<div th:include="formulario/formulario.html" th:remove="tag"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+               <footer>
+           
+      <li class="link-fadeinbg">
+        <a href="https://hibernate.org/" target="blank">Hibernate</a>
+      </li>
+            <li class="link-fadeinbg">
+        <a href="https://www.oracle.com/technetwork/java/javaee/tech/persistence-jsp-140049.html" target="blank">JPA</a>
+      </li>
+            <li class="link-fadeinbg">
+        <a href="https://www.heroku.com/" target="blank">HEROKU</a>
+      </li>
+      <li>&copy;2020 Ismael Heras Salvador.Derechos Reservados</li>
+      <div class="icons">
+      <a href="https://www.facebook.com/groups/262243821147/" target="_blank"><img id="social" src="img/facebook.png" alt=""></a>  
+         <a href="https://twitter.com/search?q=spring%20boot&src=typed_query" target="_blank"><img id="social" src="img/twitter.png" alt=""></a>  
+         <a href="https://www.instagram.com/p/B-ywotTp3Pe/" target="_blank"><img id="social" src="img/instagram.png" alt=""></a>  
+         <a href="https://www.youtube.com/watch?v=kFIvslQQZ9k&list=PLU8oAlHdN5Blq85GIxtKjIXdfHPksV_Hm" target="_blank"><img id="social" src="img/youtube.png" alt=""></a>  
+      </div>
+
+		</footer>
+		</div>
+	<div th:include="formulario/borrarUsuario.html" th:remove="tag"></div>
+</body>
+
+</html>
