@@ -44,7 +44,7 @@
             <a target="_blank" class="nav-link" id="x1" href="https://www.ibm.com/developerworks/ssa/library/j-spring-boot-basics-perry/index.html">QUE ES SPRING BOOT</a>
           </li>
         </ul>
-        <!--  --------------------------------login---------------------------------------- -->
+        <!--  --------------------------------login--  -------------------------------------- -->
 
         <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
           aria-hidden="true">
@@ -57,6 +57,7 @@
                 </button>
               </div>
               <form class="col-12" th:action="@{/index}" method="POST">
+                
                 <div class="form-group" id="user-group">
                   <label class="col col-form-label form-control-label">NombreUsuario</label><br>
                   <input type="text" class="form-control" placeholder="NombreUsuario" name="nombreusuario" />
