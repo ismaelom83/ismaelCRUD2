@@ -1,5 +1,5 @@
 	
-	// Funcion sacada de la libreria de database para realizar paginaciones y filtrado de datos
+	// Funcion sacada de la libreria de database para realizar paginaciones y filtrado de datos.
 	$(document).ready(function () {
 		$('#userList').dataTable( {
   "lengthMenu": [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
