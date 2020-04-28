@@ -36,26 +36,27 @@
 </head>
 
 <body>
-	<main>
-		<div class="container">
-			<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
-				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
-						aria-labelledby="form-tab">
-						<div class="card bg-dark text-light">
-							<div class="card-header">
-								<h4>Registro De Usuarios</h4>
-								<!-- <h2> <a th:href="index">Go Log In</a></h2> -->
-							</div>
-							<div class="card-body formulariomio">
-								<div th:include="formulario/formulario.html" th:remove="tag"></div>
-							</div>
+	<!-- <div id="div-icono">
+		<img id="iconoregistro" src="img/logo-java-spring-boot-cloud_.jpg" alt="">
+	</div> -->
+	<div class="container">
+		<div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show miformulario1" th:classappend="${formTab}" id="form" role="tabpanel"
+					aria-labelledby="form-tab">
+					<div class="card bg-secondary text-light mb-5">
+						<div class="card-header">
+							<h4>Registro De Usuarios</h4>
+							<!-- <h2> <a th:href="index">Go Log In</a></h2> -->
+						</div>
+						<div class="card-body formulariomio">
+							<div th:include="formulario/formulario.html" th:remove="tag"></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
 </body>
 
 </html>

@@ -5,7 +5,7 @@
 }
 
 body {
-    background: url(../img/fondospringboot.jpg) no-repeat center center fixed;
+    background: url(../img/fondoregistro.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -22,6 +22,27 @@ nav {
     grid-column: 1/-1;
     grid-row: 1/2;
     height: 100%;
+}
+
+#iconoprincipal{
+    margin-left: 20px;
+    margin-right: 50px;
+    max-width: 60px;
+}
+#iconoregistro{
+     max-width: 200px; 
+}
+
+/* #thymeleaf  img{
+    display: block;
+    margin: auto;
+} */
+
+#div-icono{
+    display: inline-block;
+/* position: absolute; */
+top: 25%;
+left: 10%;
 }
 
 main {
@@ -43,6 +64,9 @@ footer {
     color: black;
     align-items: center;
     height: 100%;
+}
+.icons{
+    margin: 10px;
 }
 
 footer li {
