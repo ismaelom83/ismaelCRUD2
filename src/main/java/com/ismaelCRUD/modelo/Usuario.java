@@ -9,16 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.UniqueElements;
-
+/**
+ * clase que utilizamos poara el modelo de datos de nuestra base de datos
+ * al haber marcado esta clase con la anotacion entity automaticamente se combierte en
+ * una tabla de nuestra base de datos.
+ * 
+ * @author Ismael Heras Salvador
+ *
+ * @version 1.0 
+ *
+ * @since 04/05/2020
+ */
 @Entity
 public class Usuario implements Serializable {
-
-	/**
-	 * 
-	 */
 
 	// entidad
 	private static final long serialVersionUID = 6989612429797393220L;
@@ -58,67 +62,119 @@ public class Usuario implements Serializable {
 		super();
 	}
 
+	/**
+	 * constructor de la clase Usuario.
+	 * 
+	 * @param id. numero unico de usuario en la base de datos.
+	 */
 	public Usuario(long id) {
 		super();
 		this.id = id;
 	}
-
+/**
+ * 
+ * @return numero unico de usuario en la base de datos
+ */
 	public long getId() {
 		return id;
 	}
-
+/**
+ * 
+ * @param id. numero unico de usuario en la base de datos
+ */
 	public void setId(long id) {
 		this.id = id;
 	}
-
+/**
+ * 
+ * @return nombre del usuario de la base de datos.
+ */
 	public String getNombre() {
 		return nombre;
 	}
-
+/**
+ * 
+ * @param nombre. nombre del usuario de la base de datos.
+ */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+/**
+ * 
+ * @return apellidos del usuario de la base de datos.
+ */
 	public String getApellidos() {
 		return apellidos;
 	}
-
+/**
+ * 
+ * @param apellidos. apellidos del usuario de la base de datos.
+ */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
+/**
+ * 
+ * @return email del usuario de la base de datos.
+ */
 	public String getEmail() {
 		return email;
 	}
-
+/**
+ * 
+ * @param email. email del usuario de la base de datos.
+ */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+/**
+ * 
+ * @return nombreusuario del usuario de la base de datos.
+ */
 	public String getNombreusuario() {
 		return nombreusuario;
 	}
-
+/**
+ * 
+ * @param nombreusuario. nombreusuario del usuario de la base de datos.
+ */
 	public void setNombreusuario(String nombreusuario) {
 		this.nombreusuario = nombreusuario;
 	}
-
+/**
+ * 
+ * @return password del usuario de la base de datos.
+ */
 	public String getPassword() {
 		return password;
 	}
-
+/**
+ * 
+ * @param password. password del usuario de la base de datos.
+ */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * 
+	 * @return confirma que las password introducidas son iguales
+	 */
 	public String getConfirmacionPassword() {
 		return confirmacionPassword;
 	}
-
+/**
+ * 
+ * @param confirmacionPassword. segunda password para verificar 
+ * que las password son iguales.
+ */
 	public void setConfirmacionPassword(String confirmacionPassword) {
 		this.confirmacionPassword = confirmacionPassword;
 	}
-
+/**
+ * metodo sobreescrito de la clase object que complementa al metodo equals
+ * para comparar objetos.
+ */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -132,7 +188,10 @@ public class Usuario implements Serializable {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
-
+/**
+ * meodo sobreescrito de la clase object que comprueba si los objetos son del mismo tipo
+ * y si su nombre coincide.
+ */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -176,7 +235,11 @@ public class Usuario implements Serializable {
 			return false;
 		return true;
 	}
-
+/**
+ * metodo sobreescrito de la clase object para mostrar la informacion
+ * completa de un objeto.
+ * 
+ */
 	@Override
 	public String toString() {
 		return "usuario [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email=" + email

@@ -10,7 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-//clase que utilizamos para sobrescribir los ajustes que vienen por defecto en spring security.
+/**
+ * clase que utilizamos para sobreescribir los ajustes que vienen por defecto en spring security.
+ * 
+ * @author Ismael Heras Salvador
+ *
+ * @version 1.0 
+ *
+ * @since 04/05/2020
+ */
 @Configuration
 @EnableWebSecurity
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
@@ -19,8 +27,10 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 	// permiso para entrar si no no nos cargaria el js nilos css ni las imagenes
 	String[] resources = new String[] { "/css/**", "/img/**", "/js/**", "/DOC/**" };
 
-	// metodo que se sobrescribe de la clase extendida de spring y modificamos los
-	// parametros de seguridad como queramos
+	/**
+	 * metodo que se sobrescribe de la clase extendida de spring y modificamos los
+	 * parametros de seguridad como queramos
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
@@ -51,7 +61,11 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 	// mas adelante habra que incorporarlo en la aplicacion)
 	BCryptPasswordEncoder passwordDescifrada;
 
-	// este es el metodo de la clase para decodificar la contraseña.
+	/**
+	 * metodo para descifrar la password del usuario
+	 * 
+	 * @return passwordDescifrada. retorna la password del usuario descifrada para que pueda hacer el login.
+	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		// el numero 4 indica la longitud de la contraseña.
@@ -59,14 +73,19 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 		return passwordDescifrada;
 	}
 
-	// acemos uso de la interface userdetailsservice que se utiliza para cargar los
+	// hacemos uso de la interface userdetailsservice que se utiliza para cargar los
 	// datos del usuario y implementa el metodoAuthenticationManagerBuilder
 	@Autowired
 	UserDetailsService userDetailsService;
 
+	/**
+	 * metodo para que es el encargado de realizar el login recibiendo la clave desencriptada.
+	 * 
+	 * @param auth.parametro para establecer la utenticacion del usuario.
+	 * @throws Exception.
+	 */
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		// Especifica el encargado del login y desencriptacion del password
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
