@@ -27,6 +27,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
  */
 
 @Service
+@Transactional
 public class LoginUsuario implements UserDetailsService {
 
 	// requerimos el repositorio del usuario (la interface que creamos con la
