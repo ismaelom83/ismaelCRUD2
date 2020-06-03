@@ -1,7 +1,13 @@
 package com.ismaelCRUD;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.ismaelCRUD.upload.storage.StorageService;
+
+
 /**
  * clase principal de nuestra aplicacion. que consiste en un crud para 
  * la gestion de usuarios, create, read, update, delete. 
@@ -22,4 +28,11 @@ public class IsmaelCrudApplication {
 		SpringApplication.run(IsmaelCrudApplication.class, args);
 	}
 
+	@Bean
+    CommandLineRunner init(StorageService storageService) {
+        return (args) -> {
+            storageService.deleteAll();
+            storageService.init();
+        };
+    }
 }
