@@ -98,7 +98,7 @@ public class UController {
  */
 	@PostMapping("/registro")
 	public String crearUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
-			ModelMap modelo, @RequestParam("file") 	MultipartFile file) {
+			ModelMap modelo, @RequestParam("file") MultipartFile file) {
 		modelo.addAttribute("formulario", usuario);
 		modelo.addAttribute("registro", true);
 		if (resultado.hasErrors()) {
@@ -107,12 +107,13 @@ public class UController {
 			return "formulario/registro";
 
 		} else {
-			if (!file.isEmpty()) {
-				String avatar = storageService.store(file, usuario.getId());
-				usuario.setImagen(MvcUriComponentsBuilder
-						.fromMethodName(UController.class, "serveFile", avatar).build().toUriString());
-			}
+	
 			try {
+				if (!file.isEmpty()) {
+					String avatar = storageService.store(file, usuario.getId());
+					usuario.setImagen(MvcUriComponentsBuilder
+							.fromMethodName(UController.class, "serveFile", avatar).build().toUriString());
+				}
 				servicioUsuario.creacionUsuario(usuario);
 			} catch (Exception e) {
 				modelo.addAttribute("mensajeError", e.getMessage());

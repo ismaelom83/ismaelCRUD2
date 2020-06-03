@@ -58,12 +58,14 @@ public class Usuario implements Serializable {
 	@Transient
 	private String confirmacionPassword;
 
-	
+
 	private String imagen;
 	
 	public Usuario() {
 		super();
 	}
+	
+	
 
 	/**
 	 * constructor de la clase Usuario.
@@ -77,6 +79,29 @@ public class Usuario implements Serializable {
 	
 	
 	
+
+
+
+
+
+
+
+
+public Usuario(@NotBlank @Size(min = 2, max = 20, message = "Numero de caracteres invalido") String nombre,
+		@NotBlank @Size(min = 2, max = 50, message = "Numero de caracteres invalido") String apellidos,
+		@NotBlank String email,
+		@NotBlank @Size(min = 2, max = 15, message = "Numero de caracteres invalido") String nombreusuario,
+		 String password) {
+	super();
+	this.nombre = nombre;
+	this.apellidos = apellidos;
+	this.email = email;
+	this.nombreusuario = nombreusuario;
+	this.password = password;
+}
+
+
+
 public String getImagen() {
 		return imagen;
 	}
