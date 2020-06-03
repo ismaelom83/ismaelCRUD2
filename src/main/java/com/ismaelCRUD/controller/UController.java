@@ -3,6 +3,8 @@ package com.ismaelCRUD.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,9 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import com.ismaelCRUD.modelo.Usuario;
 import com.ismaelCRUD.servicio.ServicioUsuario;
+import com.ismaelCRUD.upload.storage.StorageService;
+
 /**
  * clase controladora que responde a eventos del usuario  e invoca peticiones al modelo
  * cuando se hace una solicitud de informacion (create, read, update, delete).
@@ -29,6 +37,9 @@ public class UController {
 
 	@Autowired
 	ServicioUsuario servicioUsuario;
+	
+	@Autowired
+	StorageService storageService;
 
 	/**
 	 * metodo que sirve para redirecccionar a la pagina principal de nuestra aplicacion
@@ -87,7 +98,7 @@ public class UController {
  */
 	@PostMapping("/registro")
 	public String crearUsuario(@Valid @ModelAttribute("formulario") Usuario usuario, BindingResult resultado,
-			ModelMap modelo) {
+			ModelMap modelo, @RequestParam("file") 	MultipartFile file) {
 		modelo.addAttribute("formulario", usuario);
 		modelo.addAttribute("registro", true);
 		if (resultado.hasErrors()) {
@@ -96,6 +107,11 @@ public class UController {
 			return "formulario/registro";
 
 		} else {
+			if (!file.isEmpty()) {
+				String avatar = storageService.store(file, usuario.getId());
+				usuario.setImagen(MvcUriComponentsBuilder
+						.fromMethodName(UController.class, "serveFile", avatar).build().toUriString());
+			}
 			try {
 				servicioUsuario.creacionUsuario(usuario);
 			} catch (Exception e) {
@@ -200,6 +216,13 @@ public class UController {
 		}
 		return "redirect:/vista";
 		
+	}
+	
+	@GetMapping("/files/{filename:.+}")
+	@ResponseBody
+	public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+		Resource file = storageService.loadAsResource(filename);
+		return ResponseEntity.ok().body(file);
 	}
 
 }

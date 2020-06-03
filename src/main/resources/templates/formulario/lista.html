@@ -3,6 +3,7 @@
 		<thead>
 			<tr>
 				<th scope="col">#</th>
+				<th scope="col">Avatar</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellidos</th>
 				<th scope="col">Usuario</th>
@@ -14,6 +15,7 @@
 			<tr th:each="usuario: ${userList}">
 				<!-- <th scope="row">1</th> -->
 				<td th:text="${usuario.id}"></td>
+					<td><img src="#" th:src="@{${usuario.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'(email=${usuario.email})}" width="64px" /></td>
 				<td th:text="${usuario.nombre}"></td>
 				<td th:text="${usuario.apellidos}"></td>
 				<td th:text="${usuario.nombreusuario}"></td>
